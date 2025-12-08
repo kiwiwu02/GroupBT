@@ -74,7 +74,6 @@ The team combines strengths in Python programming, web scraping, Chinese NLP pre
 ├── Data_Visualization_articles_avg_pmi_analysis.ipynb     # document-level MI matrix & viz
 ├── data/                                   # datasets & derived artifacts (CSV/JSON/TXT)
 ├── picture/                                # saved figures (PNG)
-├── part_introduction.md                    # project introduction (complementary)
 ├── README.md                               # Description of Our Project
 └── requirements.txt                        # environment dependencies
 ```
