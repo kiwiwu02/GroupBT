@@ -11,8 +11,8 @@ Key contributions:
 
 ## Motivation & Team Background
 
-### Motivation: 
- 
+### Motivation
+
  Public news streams are a widely available, continuously updated signal about markets, policy, technology, and social narratives. They offer rich linguistic patterns—collocations, stylistic markers, and topical signifiers—that can be analyzed programmatically without relying on opaque models.
 
  How to build a fully reproducible, interpretable, and code-centric pipeline that transforms raw web news into actionable analytics—discovering strong adjacent collocations (via co-occurrence probabilities and PMI), surfacing topical markers (via word frequency), and quantifying article similarity (via document-level mutual information). The project answers: “What lexical structures and stylistic tendencies characterize different news outlets, and how can we compare them in a transparent, programming-first way?”
@@ -154,24 +154,27 @@ This is a programming-focused project; we apply code-first techniques to produce
 - Statistical summaries:
   - ChinaNews: 965 articles (`df.info()`), title/content columns non-null; confirms robust scraping.
   - Sina News: 975 articles (`df.info()`), title/content columns non-null; confirms broad coverage.
+  
 - Corpus statistics:
   - ChinaNews: ~3,968 unique Chinese characters; 165,590 adjacent pairs with PMI computed.
   - Sina News: ~3,526 unique characters; 181,393 adjacent pairs with PMI computed.
 
 - Word frequency: 
 
-    **XinlangNews**
+   **XinlangNews**
 
    - Top 10 high-frequency words in content: 我们、公司、市场、产品、中国、企业、可能、罗永浩、亿元、科技；
    - Top 10 high-frequency words in title: 股份、中国、AI、公司、12、科技、市场、目录、证券、创新。
-   ![Wordcloud_XinlangNews](/picture/xinlangnews_wordclouds.png)
+
+   ![Wordcloud_XinlangNews](README.assets/xinlangnews_wordclouds.png)
 
    **ChianNews**
 
    - Top 10 high-frequency words in content: 国际、中国、社会、体育、军事、热点、统战、视频、财经、文娱；
 
    - Top 10 high-frequency words in title: 中国、2025、发展、举行、国际、经济、世界杯、立法会、创新、香港。
-   ![Wordcloud_ChinaNews](/picture/chinanews_wordclouds.png)
+
+     ![Wordcloud_ChinaNews](README.assets/chinanews_wordclouds.png)
 
 - Visualizations (saved under `picture/`):
   - Co-occurrence probability heatmaps (cleaned, top 50 characters): `chinanews_cleaned_cooccurrence_analysis.png`, `xinlangnews_cleaned_cooccurrence_analysis.png`.
@@ -183,9 +186,9 @@ This is a programming-focused project; we apply code-first techniques to produce
 
 Interpretation highlights:
 - ChinaNews tends to surface national/international themes (强共现：军事/热点/体育/世界/国际等)，reflected by strong adjacent pairs like 军→事 (≈0.7419), 热→点 (≈0.6546), 体→育 (≈0.5310), 世→界 (≈0.4323).
-![Network_ChinaNews](/picture/chinanews_cleaned_cooccurrence_network.png)
+![Network_ChinaNews](README.assets/chinanews_cleaned_cooccurrence_network.png)
 - Sina News shows market/economics emphasis (强共现：投→资 (≈0.7000), 公→司 (≈0.6958), 市→场 (≈0.6004), 基→金 (≈0.3955), 月→日 (≈0.3439)).
-![Network_XinlangNews](/picture/xinlangnews_cleaned_cooccurrence_network.png)
+![Network_XinlangNews](README.assets/xinlangnews_cleaned_cooccurrence_network.png)
 - Word frequency corroborates topical lean (business/tech terms appearing frequently in Sina titles and content).
 - Document-level MI matrices reveal clusters of similar articles; MI values range [0, ln(2)] with many pairs near mid-high values, indicating topical or stylistic overlap.
 
@@ -200,7 +203,7 @@ We do not pursue complex ML models; instead, we use interpretable metrics:
 
 Evaluation and comparison:
 - Cleaned PMI comparison (cross-source) uses common vs. unique pairs, difference histograms, scatter against y=x:
-![comparison](/picture/cleaned_pmi_comparison_analysis.png)
+  ![comparison](README.assets/cleaned_pmi_comparison_analysis.png)
   - Common pairs: ~47,189; Xinlang unique: ~91,895; ChinaNews unique: ~74,568.
   - Mean difference (ChinaNews − Xinlang) ≈ 0.023 over common pairs; top absolute differences highlight outlet-specific phraseology.
 - Document MI:
@@ -236,13 +239,13 @@ Meaningful insights:
    - ChinaNews: frequent strong pairs reflect broad news topicality (军事/热点/体育/世界/国际). High-PMI pairs include formal fixed expressions and journalistic terms, suggesting tighter collocational patterns.
    - Sina News: strong economic/market collocations (投资/公司/市场/基金/月日) and tech themes (AI、科技、证券). Word frequency analysis corroborates the topical lean.
   - Complexity histograms: lexical richness and average word length distributions indicate stylistic variability across articles.
-  ![length_distributions](/picture/xinlangnews_xlres.png)
-  ![Complexity_histograms](/picture/xinlangnews_complexity_analysis.png)
+  ![length_distributions](README.assets/xinlangnews_xlres.png)
+  ![Complexity_histograms](README.assets/xinlangnews_complexity_analysis.png)
 
 - Document mutual information:
   - Vocabulary size ~3.4k; valid documents ~968 (xinlangnews); MI range [0, 0.693147]; average ~0.454; median ~0.456.
   - Insight: Many article pairs exhibit moderate-to-high similarity, reflecting common themes; top MI pairs (titles printed) indicate highly aligned content.
-  ![Document_MI](/picture/xinlangnews_document_mutual_info_analysis.png)
+  ![Document_MI](README.assets/xinlangnews_document_mutual_info_analysis.png)
 
 Figures and data (saved artifacts):
 - `picture/chinanews_cleaned_cooccurrence_analysis.png`, `picture/xinlangnews_cleaned_cooccurrence_analysis.png`
