@@ -1,7 +1,7 @@
 # End-to-End Chinese News Analytics: From Web Crawling to Co-occurrence, PMI, and Document Similarity
 
 ## Overview
-This repository implements a programming-first, end-to-end data science workflow on contemporary Chinese news. We collect our own datasets from ChinaNews and Sina News via web crawling, perform rigorous data cleaning and management, and conduct interpretable analytics including adjacent character co-occurrence probabilities, pointwise mutual information (PMI), word frequency analysis, and document-level mutual information. The pipeline emphasizes reproducibility, code-driven analysis, and visual storytelling through heatmaps, histograms, network graphs, and word clouds.
+This repository implements a programming-first, end-to-end data science workflow on contemporary Chinese news. We collect our own datasets from [ChinaNews](https://www.chinanews.com.cn/scroll-news/news1.html) and [Sina News](https://news.sina.com.cn/roll/#pageid=153&lid=2509&k=&num=50&page={i}) via web crawling, perform rigorous data cleaning and management, and conduct interpretable analytics including adjacent character co-occurrence probabilities, [pointwise mutual information (PMI)](https://en.wikipedia.org/wiki/Pointwise_mutual_information), word frequency analysis, and document-level mutual information. The pipeline emphasizes reproducibility, code-driven analysis, and visual storytelling through heatmaps, histograms, network graphs, and word clouds.
 
 Key contributions:
 - Self-collected datasets from two major Chinese news sources (ChinaNews and Sina News).
@@ -75,6 +75,7 @@ The team combines strengths in Python programming, web scraping, Chinese NLP pre
 ├── data/                                   # datasets & derived artifacts (CSV/JSON/TXT)
 ├── picture/                                # saved figures (PNG)
 ├── README.md                               # Description of Our Project
+├── Course_Project_Guidelines.md            # course instruction reference
 └── requirements.txt                        # environment dependencies
 ```
 
@@ -283,4 +284,4 @@ Figures and data (saved artifacts):
 - [CMCL 2022: A Corpus-based Analysis of Lexical Co-occurrence and Predictability](https://aclanthology.org/2022.cmcl-1.6.pdf)
 - [Pointwise Mutual Information and Information Retrieval (Scientific Methods, 1996)](https://www.sciencedirect.com/science/article/abs/pii/S030645739600074X)
 ## Acknowledgements
-This project adheres to the CISC7201 Data Science Programming Course Project Guidelines and uses self-collected datasets only, focusing on programming, reproducibility, and clear communication of insights.
+This project adheres to the CISC7201 Data Science Programming [Course Project Guidelines](Course_Project_Guidelines.md) and uses self-collected datasets only, focusing on programming, reproducibility, and clear communication of insights.
