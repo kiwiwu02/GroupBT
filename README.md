@@ -23,11 +23,18 @@ Key contributions:
 
 ### Team Background
 The team combines strengths in Python programming, web scraping, Chinese NLP preprocessing, and visualization. Roles span data collection, cleaning/engineering, exploratory analysis, PMI and co-occurrence modeling, and report/presentation.
+- Team Members:
+  - mc56730 — WU QIWEI
+  - mc56733 — GUO XIAOYU
+  - mc56565 — KANG PENGFEI
+  - mc56677 — QIU WENLE
+  - mc56688 — TIAN JISHENG
+  
 - Strengths and experience:
-   - 【WU QIWEI and KANG PENGFEI】Web scraping & data acquisition: Experience with Selenium (headless Chrome), `requests`, `BeautifulSoup`, and handling dynamic page structures, delays, and parsing fallbacks.
-   - 【TIAN JISHENG and WU QIWEI】Data engineering & cleaning: Proficiency in `pandas`/`numpy`, regex-based normalization, Chinese text filtering, and building reusable pipelines with explicit inputs/outputs.
-   - 【GUO XIAOYU、TIAN JISHENG and QIU WENLE】Chinese NLP preprocessing: Familiarity with `jieba` tokenization, stop-word handling, and Chinese character-level analysis for co-occurrence and PMI.
-   - 【KANG PENGFEI、QIU WENLE and GUO XIAOYU】Visualization & communication: Expertise in `matplotlib`/`seaborn`/`networkx`/`wordcloud`, visual storytelling, figure annotation, and report structuring.
+   - [QIU WENLE and KANG PENGFEI] Web scraping & data acquisition: Experience with Selenium (headless Chrome), `requests`, `BeautifulSoup`, and handling dynamic page structures, delays, and parsing fallbacks.
+   - [TIAN JISHENG and WU QIWEI] Data engineering & cleaning: Proficiency in `pandas`/`numpy`, regex-based normalization, Chinese text filtering, and building reusable pipelines with explicit inputs/outputs.
+   - [GUO XIAOYU、TIAN JISHENG and KANG PENGFEI] Chinese NLP preprocessing: Familiarity with `jieba` tokenization, stop-word handling, and Chinese character-level analysis for co-occurrence and PMI.
+   - [WU QIWEI、QIU WENLE and GUO XIAOYU] Visualization & communication: Expertise in `matplotlib`/`seaborn`/`networkx`/`wordcloud`, visual storytelling, figure annotation, and report structuring.
 - Influence on topic choice:
   - The team’s skill set naturally aligns with a programming-first, interpretable approach. Rather than optimizing complex models, we prioritized robust pipelines, transparency, and reproducibility.
   - Domain familiarity with Chinese media (business/tech/governance reporting) guided dataset selection (ChinaNews vs. Sina News) and the focus on contrasts between outlets.
