@@ -10,9 +10,31 @@ Key contributions:
 - Document-level mutual information and comprehensive visualizations for comparative analysis.
 
 ## Motivation & Team Background
-- Motivation: Public news streams capture evolving narratives across markets, policy, and society. Analyzing linguistic patterns—at both character and word levels—reveals common collocations, topic markers, and stylistic trends. We focus on interpretable, programming-driven analytics rather than model complexity, ensuring transparency and reproducibility aligned with course guidelines.
-- Team Background: The team combines strengths in Python programming, web scraping, Chinese NLP preprocessing, and visualization. Roles span data collection, cleaning/engineering, exploratory analysis, PMI and co-occurrence modeling, and report/presentation.
-- Contributions: Each member contributes meaningfully to the pipeline; workload distribution is fair and recorded. (Detailed names and roles to be appended in the final version.)
+
+### Motivation: 
+ 
+ Public news streams are a widely available, continuously updated signal about markets, policy, technology, and social narratives. They offer rich linguistic patterns—collocations, stylistic markers, and topical signifiers—that can be analyzed programmatically without relying on opaque models.
+
+ How to build a fully reproducible, interpretable, and code-centric pipeline that transforms raw web news into actionable analytics—discovering strong adjacent collocations (via co-occurrence probabilities and PMI), surfacing topical markers (via word frequency), and quantifying article similarity (via document-level mutual information). The project answers: “What lexical structures and stylistic tendencies characterize different news outlets, and how can we compare them in a transparent, programming-first way?”
+
+  - Interpretability and transparency are critical in data science—especially for text analytics used in decision-making and monitoring. Our approach favors clear, auditable metrics over black-box accuracy.
+  - Reproducibility: By focusing on end-to-end programming (web crawling → cleaning → engineered analytics → visualizations), we demonstrate a practical template that others can extend or audit.
+  - Practical relevance: Collocational strength and document similarity inform downstream tasks (keyword expansion, topic discovery, content curation), and support comparative media studies (e.g., economic vs. national focus across outlets).
+
+### Team Background
+The team combines strengths in Python programming, web scraping, Chinese NLP preprocessing, and visualization. Roles span data collection, cleaning/engineering, exploratory analysis, PMI and co-occurrence modeling, and report/presentation.
+- Strengths and experience:
+   - 【WU QIWEI and KANG PENGFEI】Web scraping & data acquisition: Experience with Selenium (headless Chrome), `requests`, `BeautifulSoup`, and handling dynamic page structures, delays, and parsing fallbacks.
+   - 【TIAN JISHENG and WU QIWEI】Data engineering & cleaning: Proficiency in `pandas`/`numpy`, regex-based normalization, Chinese text filtering, and building reusable pipelines with explicit inputs/outputs.
+   - 【GUO XIAOYU、TIAN JISHENG and QIU WENLE】Chinese NLP preprocessing: Familiarity with `jieba` tokenization, stop-word handling, and Chinese character-level analysis for co-occurrence and PMI.
+   - 【KANG PENGFEI、QIU WENLE and GUO XIAOYU】Visualization & communication: Expertise in `matplotlib`/`seaborn`/`networkx`/`wordcloud`, visual storytelling, figure annotation, and report structuring.
+- Influence on topic choice:
+  - The team’s skill set naturally aligns with a programming-first, interpretable approach. Rather than optimizing complex models, we prioritized robust pipelines, transparency, and reproducibility.
+  - Domain familiarity with Chinese media (business/tech/governance reporting) guided dataset selection (ChinaNews vs. Sina News) and the focus on contrasts between outlets.
+- Supporting domain knowledge:
+  - Awareness of journalistic style conventions and common formal expressions in Chinese news informed stop-word design, collocation expectations, and interpretation of high-PMI pairs.
+  - Basic statistics and information theory (PMI, KL/MI) shaped metric choices and the design of document-level similarity analysis.
+
 
 ## Data
 ### Sources and scale
@@ -118,24 +140,129 @@ You can run the full pipeline from scratch or start from provided data artifacts
   - Requirements file and consistent notebook file paths for reproducible runs.
 
 ## Data Analysis: Learning, Analytics, Visualization
-- Learning (interpretable metrics):
-  - Character-level co-occurrence and PMI for collocational strength; document-level MI for cross-article similarity.
-- Analytics:
-  - Statistical summaries: unique characters, total pairs, PMI distributions (min/max/mean/median), common vs. unique pairs across sources.
-  - Thresholding strong co-occurrence pairs (e.g., 10% of maximum) to surface salient relationships.
-- Visualization:
-  - Heatmaps (co-occurrence matrices; document MI), histograms (probabilities/PMI/differences), bar charts (top words/pairs), network graphs (directed co-occurrence), word clouds (content/title).
+This is a programming-focused project; we apply code-first techniques to produce interpretable metrics and visualizations. We summarize results by notebook, integrating printed outputs and saved figures.
 
-## Results & Insights (Representative)
-- ChinaNews: frequent strong pairs reflect broad news topicality (军事/热点/体育/世界/国际). High-PMI pairs include formal fixed expressions and journalistic terms, suggesting tighter collocational patterns.
-- Sina News: strong economic/market collocations (投资/公司/市场/基金/月日) and tech themes (AI、科技、证券). Word frequency analysis corroborates the topical lean.
-- Cross-source PMI comparison: large common set of collocations with meaningful differences; ChinaNews slightly higher mean PMI in cleaned sets; scatter around y=x indicates broadly comparable collocational strength with deviations worthy of inspection.
-- Document MI: distributions centered near mid-high values with subsets approaching ln(2) upper bound; top pairs reflect similar topics or stylistic overlap.
+### Exploratory Data Analysis
+
+- Statistical summaries:
+  - ChinaNews: 965 articles (`df.info()`), title/content columns non-null; confirms robust scraping.
+  - Sina News: 975 articles (`df.info()`), title/content columns non-null; confirms broad coverage.
+- Corpus statistics:
+  - ChinaNews: ~3,968 unique Chinese characters; 165,590 adjacent pairs with PMI computed.
+  - Sina News: ~3,526 unique characters; 181,393 adjacent pairs with PMI computed.
+
+- Word frequency: 
+
+    **XinlangNews**
+
+   - Top 10 high-frequency words in content: 我们、公司、市场、产品、中国、企业、可能、罗永浩、亿元、科技；
+   - Top 10 high-frequency words in title: 股份、中国、AI、公司、12、科技、市场、目录、证券、创新。
+   ![Wordcloud_XinlangNews](/picture/xinlangnews_wordclouds.png)
+
+   **ChianNews**
+
+   - Top 10 high-frequency words in content: 国际、中国、社会、体育、军事、热点、统战、视频、财经、文娱；
+
+   - Top 10 high-frequency words in title: 中国、2025、发展、举行、国际、经济、世界杯、立法会、创新、香港。
+   ![Wordcloud_ChinaNews](/picture/chinanews_wordclouds.png)
+
+- Visualizations (saved under `picture/`):
+  - Co-occurrence probability heatmaps (cleaned, top 50 characters): `chinanews_cleaned_cooccurrence_analysis.png`, `xinlangnews_cleaned_cooccurrence_analysis.png`.
+  - Strong pair barh charts with probability labels (top 15).
+  - PMI distribution histograms and top-PMI bar charts (from analysis and processing notebooks).
+  - Word clouds for content and title: `{basedata}_wordclouds.png` (content: white background; title: black background).
+  - Title/content length histograms and lexical richness / average word-length histograms: `{basedata}_xlres.png`, `{basedata}_complexity_analysis.png`.
+  - Document mutual information: heatmap + MI distribution with statistics box: `{basedata}_document_mutual_info_analysis.png`.
+
+Interpretation highlights:
+- ChinaNews tends to surface national/international themes (强共现：军事/热点/体育/世界/国际等)，reflected by strong adjacent pairs like 军→事 (≈0.7419), 热→点 (≈0.6546), 体→育 (≈0.5310), 世→界 (≈0.4323).
+![Network_ChinaNews](/picture/chinanews_cleaned_cooccurrence_network.png)
+- Sina News shows market/economics emphasis (强共现：投→资 (≈0.7000), 公→司 (≈0.6958), 市→场 (≈0.6004), 基→金 (≈0.3955), 月→日 (≈0.3439)).
+![Network_XinlangNews](/picture/xinlangnews_cleaned_cooccurrence_network.png)
+- Word frequency corroborates topical lean (business/tech terms appearing frequently in Sina titles and content).
+- Document-level MI matrices reveal clusters of similar articles; MI values range [0, ln(2)] with many pairs near mid-high values, indicating topical or stylistic overlap.
+
+### Modeling & Evaluation
+We do not pursue complex ML models; instead, we use interpretable metrics:
+- Character-level co-occurrence and PMI:
+  - PMI: `PMI(c1,c2) = log2( P(c1,c2) / (P(c1)P(c2)) )` with `P(c1,c2)=P(c2|c1)P(c1)`.
+  - Cleaning of stop words and non-Chinese characters produces more stable PMI distributions and stronger signal in top pairs.
+- Document-level mutual information:
+  - MI(P,Q) defined via KL divergences to the mean distribution M=0.5*(P+Q); values capped at ln(2).
+  - Valid-doc filtering ensures stable MI estimates; saved top MI pairs with titles aid interpretation.
+
+Evaluation and comparison:
+- Cleaned PMI comparison (cross-source) uses common vs. unique pairs, difference histograms, scatter against y=x:
+![comparison](/picture/cleaned_pmi_comparison_analysis.png)
+  - Common pairs: ~47,189; Xinlang unique: ~91,895; ChinaNews unique: ~74,568.
+  - Mean difference (ChinaNews − Xinlang) ≈ 0.023 over common pairs; top absolute differences highlight outlet-specific phraseology.
+- Document MI:
+  - Summary statistics printed in the MI notebook (mean, median, min, max, counts) to assess distribution properties and cluster potential.
+
+### Visualization & Interpretation
+Effective storytelling:
+- Heatmaps communicate structure at scale (co-occurrence probabilities; MI).
+- Histograms reveal distributions and skews (PMI values; MI upper-triangle).
+- Bar charts emphasize top collocations and frequency leaders.
+- Network graphs (cleaned co-occurrence) depict directional relationships with edge weights; node sizes reflect centrality (degree).
+- Word clouds provide intuitive view of topical emphasis across content vs. titles.
+
+Meaningful insights:
+- Fixed expressions and formal journalistic terms dominate top PMI pairs (e.g., 军事、国际、市场、公司、基金等)，indicating stable lexical norms.
+- Source comparisons show ChinaNews’s broader national/international lexical clusters versus Sina News’s market/tech clusters.
+- MI clusters suggest topical groupings suitable for future theme extraction or trend dashboards.
+
+## Results & Insights (Comprehensive)
+- ChinaNews vs. Sina News lexical patterns:
+  - ChinaNews strong-pair examples (probabilities from cleaned matrices): 军→事 ≈ 0.7419, 热→点 ≈ 0.6546, 体→育 ≈ 0.5310, 世→界 ≈ 0.4323, 国→际 ≈ 0.3879, 中→国 ≈ 0.3593.
+  - Sina strong-pair examples: 投→资 ≈ 0.7000, 公→司 ≈ 0.6958, 市→场 ≈ 0.6004, 基→金 ≈ 0.3955, 月→日 ≈ 0.3439, 产→品 ≈ 0.3210.
+  - Insight: outlets exhibit distinct topical collocations aligned with editorial focus—national/international vs. market/tech.
+- PMI distributions:
+  - ChinaNews: top PMI ≈ 21.18; average ≈ 2.15; median ≈ 1.69; lowest ≈ -9.11.
+  - Sina: top PMI ≈ 20.62; average ≈ 1.63; median ≈ 1.09; lowest ≈ -8.51.
+  - Insight: both contain many strong formal collocations; ChinaNews shows slightly higher average PMI after cleaning.
+- Cross-source cleaned PMI comparison:
+  - Common pairs ~47k; small positive mean difference (≈0.023) suggests ChinaNews marginally stronger PMI on average for shared pairs.
+  - Top abs-diff pairs reveal outlet-specific phraseology to inspect (visuals and CSV saved for detailed review).
+- Word frequency & complexity (xinlangnews example):
+
+   - ChinaNews: frequent strong pairs reflect broad news topicality (军事/热点/体育/世界/国际). High-PMI pairs include formal fixed expressions and journalistic terms, suggesting tighter collocational patterns.
+   - Sina News: strong economic/market collocations (投资/公司/市场/基金/月日) and tech themes (AI、科技、证券). Word frequency analysis corroborates the topical lean.
+  - Complexity histograms: lexical richness and average word length distributions indicate stylistic variability across articles.
+  ![length_distributions](/picture/xinlangnews_xlres.png)
+  ![Complexity_histograms](/picture/xinlangnews_complexity_analysis.png)
+
+- Document mutual information:
+  - Vocabulary size ~3.4k; valid documents ~968 (xinlangnews); MI range [0, 0.693147]; average ~0.454; median ~0.456.
+  - Insight: Many article pairs exhibit moderate-to-high similarity, reflecting common themes; top MI pairs (titles printed) indicate highly aligned content.
+  ![Document_MI](/picture/xinlangnews_document_mutual_info_analysis.png)
+
+Figures and data (saved artifacts):
+- `picture/chinanews_cleaned_cooccurrence_analysis.png`, `picture/xinlangnews_cleaned_cooccurrence_analysis.png`
+- `picture/chinanews_cleaned_cooccurrence_network.png`, `picture/xinlangnews_cleaned_cooccurrence_network.png`
+- `picture/cleaned_pmi_comparison_analysis.png`
+- `picture/{basedata}_xlres.png`, `picture/{basedata}_wordclouds.png`, `picture/{basedata}_complexity_analysis.png`
+- `picture/{basedata}_document_mutual_info_analysis.png`
+- `data/*_analysis_results_*`, `data/*_cleaned_*`, `data/*_pmi_analysis.*`, `data/cleaned_pmi_*`, `data/*_document_mutual_info_results.csv`
 
 ## Conclusion & Reflection
-- A reproducible, interpretable pipeline transforms raw web data into actionable, code-driven analytics and visuals, aligning with course priorities.
-- Limitations: adjacent-character PMI misses longer multi-character phrases; web layout changes can affect scraping; topic context is partially captured at character level.
-- Future work: phrase-level PMI (n-grams), time-resolved trend analysis, topic clustering with interpretable features, cross-outlet dashboards.
+- Key findings:
+  - A fully reproducible, interpretable pipeline transforms raw web news into transparent metrics and rich visuals.
+  - Clear collocational structures emerge in both sources; top PMI pairs are fixed expressions or formal terms typical of Chinese news.
+  - Cross-source contrasts (ChinaNews vs. Sina) reflect editorial focus—national/international vs. market/tech—supported by co-occurrence, PMI, and frequency analyses.
+  - Document MI reveals clusters of similar articles, suggesting topical grouping potential.
+- Limitations:
+  - Adjacent-character PMI misses longer multi-character phrases or named entities; segmentation quality affects word-level stats.
+  - Web layout changes can disrupt scraping; anti-bot measures necessitate careful throttling and retries.
+  - Topic context is partially captured at character level; sentence/paragraph structure not explicitly modeled.
+- Reflection (team learning):
+  - Building an end-to-end, code-driven workflow improves reproducibility and interpretability; cleaning decisions materially affect downstream metrics.
+  - Visual storytelling (heatmaps, network graphs, word clouds) helps communicate complex structures effectively.
+- Future work:
+  - Phrase-level PMI (n-grams) and named-entity-aware collocation analysis.
+  - Time-resolved trend analysis (daily/weekly windows) and topic clustering with interpretable features.
+  - Cross-outlet dashboards and more nuanced sentiment/stylistic analytics.
+  - Robust scraping orchestration (retry logic, error logs), environment freezing (lockfile), and automated figure generation pipelines.
 
 ## Presentation (to be added)
 - Slides: `./slides/<file>.pdf` or `.html` or `.pptx`
@@ -143,11 +270,18 @@ You can run the full pipeline from scratch or start from provided data artifacts
 - Content highlights: motivation, data, engineering pipeline, key findings; demo of core visualizations encouraged.
 
 ## References
-- [jieba](https://github.com/fxsjy/jieba)
+### Tools and Libraries
+- [NewsSpider (reference project)](https://github.com/joelYing/NewsSpider)
+- [jieba: Chinese text segmentation](https://github.com/fxsjy/jieba)
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
 - [NetworkX](https://networkx.org/)
 - [WordCloud for Python](https://amueller.github.io/word_cloud/)
 - [Matplotlib](https://matplotlib.org/) / [Seaborn](https://seaborn.pydata.org/)
 
+### Articles, Guides, and Papers
+- [知乎专栏：中文文本分析入门与方法概览](https://zhuanlan.zhihu.com/p/692365794)
+- [GWU Text Analysis Methods Guide](https://libguides.gwu.edu/textanalysis/methods)
+- [CMCL 2022: A Corpus-based Analysis of Lexical Co-occurrence and Predictability](https://aclanthology.org/2022.cmcl-1.6.pdf)
+- [Pointwise Mutual Information and Information Retrieval (Scientific Methods, 1996)](https://www.sciencedirect.com/science/article/abs/pii/S030645739600074X)
 ## Acknowledgements
 This project adheres to the CISC7201 Data Science Programming Course Project Guidelines and uses self-collected datasets only, focusing on programming, reproducibility, and clear communication of insights.
