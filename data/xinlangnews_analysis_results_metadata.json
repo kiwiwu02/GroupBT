@@ -1,0 +1,10 @@
+{
+  "total_chars": 1616436,
+  "save_time": "2025-12-08T15:49:24.673674",
+  "data_types": {
+    "corpus": "list",
+    "cooccur_prob": "dict",
+    "char_count": "defaultdict",
+    "pmi_result": "dict"
+  }
+}
