@@ -83,6 +83,8 @@ The team combines strengths in Python programming, web scraping, Chinese NLP pre
 ├── picture/                                # saved figures (PNG)
 ├── README.md                               # Description of Our Project
 ├── Course_Project_Guidelines.md            # course instruction reference
+├── GroupBT_Presentation.pptx               # GroupBT Presentation PPTX
+├── GroupBT_Presentation.mp4                # GroupBT Presentation Video
 └── requirements.txt                        # environment dependencies
 ```
 
@@ -274,10 +276,11 @@ Figures and data (saved artifacts):
   - Cross-outlet dashboards and more nuanced sentiment/stylistic analytics.
   - Robust scraping orchestration (retry logic, error logs), environment freezing (lockfile), and automated figure generation pipelines.
 
-## Presentation (to be added)
-- Slides: `./slides/<file>.pdf` or `.html` or `.pptx`
-- Video: `./video/<file>.mp4` (10–12 minutes)
-- Content highlights: motivation, data, engineering pipeline, key findings; demo of core visualizations encouraged.
+## Presentation
+- pptx: [GroupBT_Presentation_PPTX](./GroupBT_Presentation.pptx)
+- Video: [GroupBT_Presentation_Video](./GroupBT_Presentation.mp4)  
+Or you can also watch it on Bilibili by clicking [this link](https://b23.tv/Phd8aPN).
+<video src="GroupBT_Presentation.mp4"></video>
 
 ## References
 ### Tools and Libraries
