@@ -80,11 +80,14 @@ The team combines strengths in Python programming, web scraping, Chinese NLP pre
 ├── Data_Visualization_word_frequency_analysis.ipynb       # word frequency, word clouds, complexity
 ├── Data_Visualization_articles_avg_pmi_analysis.ipynb     # document-level MI matrix & viz
 ├── data/                                   # datasets & derived artifacts (CSV/JSON/TXT)
+├── README.assets/                          # pictures for Report
 ├── picture/                                # saved figures (PNG)
 ├── README.md                               # Description of Our Project
 ├── Course_Project_Guidelines.md            # course instruction reference
 ├── GroupBT_Presentation.pptx               # GroupBT Presentation PPTX
 ├── GroupBT_Presentation.mp4                # GroupBT Presentation Video
+├── GroupBT_Report.pdf                      # GroupBT Report(pdf)
+├── GroupBT_Report.html                     # GroupBT Report(html)--Recommendation
 └── requirements.txt                        # environment dependencies
 ```
 
@@ -277,6 +280,7 @@ Figures and data (saved artifacts):
   - Robust scraping orchestration (retry logic, error logs), environment freezing (lockfile), and automated figure generation pipelines.
 
 ## Presentation
+- Report:Our project report offers two versions: [HTML (recommended)](./GroupBT_Report.html) and [PDF](./GroupBT_Report.pdf) .
 - pptx: [GroupBT_Presentation_PPTX](./GroupBT_Presentation.pptx)
 - Video: [GroupBT_Presentation_Video](./GroupBT_Presentation.mp4)  
 Or you can also watch it on Bilibili by clicking [this link](https://b23.tv/Phd8aPN).

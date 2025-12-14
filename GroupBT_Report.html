@@ -1,0 +1,706 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>README</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='end-to-end-chinese-news-analytics-from-web-crawling-to-co-occurrence-pmi-and-document-similarity'><span>End-to-End Chinese News Analytics: From Web Crawling to Co-occurrence, PMI, and Document Similarity</span></h1><h2 id='overview'><span>Overview</span></h2><p><span>This repository implements a programming-first, end-to-end data science workflow on contemporary Chinese news. We collect our own datasets from </span><a href='https://www.chinanews.com.cn/scroll-news/news1.html'><span>ChinaNews</span></a><span> and </span><a href='https://news.sina.com.cn/roll/#pageid=153&amp;lid=2509&amp;k=&amp;num=50&amp;page={i}'><span>Sina News</span></a><span> via web crawling, perform rigorous data cleaning and management, and conduct interpretable analytics including adjacent character co-occurrence probabilities, </span><a href='https://en.wikipedia.org/wiki/Pointwise_mutual_information'><span>pointwise mutual information (PMI)</span></a><span>, word frequency analysis, and document-level mutual information. The pipeline emphasizes reproducibility, code-driven analysis, and visual storytelling through heatmaps, histograms, network graphs, and word clouds.</span></p><p><span>Key contributions:</span></p><ul><li><p><span>Self-collected datasets from two major Chinese news sources (ChinaNews and Sina News).</span></p></li><li><p><span>Clean, reproducible pipeline for co-occurrence and PMI analysis at the character level.</span></p></li><li><p><span>Word-level insights (frequency distributions, word clouds) and article complexity metrics.</span></p></li><li><p><span>Document-level mutual information and comprehensive visualizations for comparative analysis.</span></p></li></ul><h2 id='motivation--team-background'><span>Motivation &amp; Team Background</span></h2><h3 id='motivation'><span>Motivation</span></h3><p><span> Public news streams are a widely available, continuously updated signal about markets, policy, technology, and social narratives. They offer rich linguistic patterns—collocations, stylistic markers, and topical signifiers—that can be analyzed programmatically without relying on opaque models.</span></p><p><span> How to build a fully reproducible, interpretable, and code-centric pipeline that transforms raw web news into actionable analytics—discovering strong adjacent collocations (via co-occurrence probabilities and PMI), surfacing topical markers (via word frequency), and quantifying article similarity (via document-level mutual information). The project answers: “What lexical structures and stylistic tendencies characterize different news outlets, and how can we compare them in a transparent, programming-first way?”</span></p><ul><li><p><span>Interpretability and transparency are critical in data science—especially for text analytics used in decision-making and monitoring. Our approach favors clear, auditable metrics over black-box accuracy.</span></p></li><li><p><span>Reproducibility: By focusing on end-to-end programming (web crawling → cleaning → engineered analytics → visualizations), we demonstrate a practical template that others can extend or audit.</span></p></li><li><p><span>Practical relevance: Collocational strength and document similarity inform downstream tasks (keyword expansion, topic discovery, content curation), and support comparative media studies (e.g., economic vs. national focus across outlets).</span></p></li></ul><h3 id='team-background'><span>Team Background</span></h3><p><span>The team combines strengths in Python programming, web scraping, Chinese NLP preprocessing, and visualization. Roles span data collection, cleaning/engineering, exploratory analysis, PMI and co-occurrence modeling, and report/presentation.</span></p><ul><li><p><span>Team Members:</span></p><ul><li><p><span>mc56730 — WU QIWEI</span></p></li><li><p><span>mc56733 — GUO XIAOYU</span></p></li><li><p><span>mc56565 — KANG PENGFEI</span></p></li><li><p><span>mc56677 — QIU WENLE</span></p></li><li><p><span>mc56688 — TIAN JISHENG</span></p></li></ul></li><li><p><span>Strengths and experience:</span></p><ul><li><p><span>[QIU WENLE and KANG PENGFEI] Web scraping &amp; data acquisition: Experience with Selenium (headless Chrome), </span><code>requests</code><span>, </span><code>BeautifulSoup</code><span>, and handling dynamic page structures, delays, and parsing fallbacks.</span></p></li><li><p><span>[TIAN JISHENG and WU QIWEI] Data engineering &amp; cleaning: Proficiency in </span><code>pandas</code><span>/</span><code>numpy</code><span>, regex-based normalization, Chinese text filtering, and building reusable pipelines with explicit inputs/outputs.</span></p></li><li><p><span>[GUO XIAOYU、TIAN JISHENG and KANG PENGFEI] Chinese NLP preprocessing: Familiarity with </span><code>jieba</code><span> tokenization, stop-word handling, and Chinese character-level analysis for co-occurrence and PMI.</span></p></li><li><p><span>[WU QIWEI、QIU WENLE and GUO XIAOYU] Visualization &amp; communication: Expertise in </span><code>matplotlib</code><span>/</span><code>seaborn</code><span>/</span><code>networkx</code><span>/</span><code>wordcloud</code><span>, visual storytelling, figure annotation, and report structuring.</span></p></li></ul></li><li><p><span>Influence on topic choice:</span></p><ul><li><p><span>The team’s skill set naturally aligns with a programming-first, interpretable approach. Rather than optimizing complex models, we prioritized robust pipelines, transparency, and reproducibility.</span></p></li><li><p><span>Domain familiarity with Chinese media (business/tech/governance reporting) guided dataset selection (ChinaNews vs. Sina News) and the focus on contrasts between outlets.</span></p></li></ul></li><li><p><span>Supporting domain knowledge:</span></p><ul><li><p><span>Awareness of journalistic style conventions and common formal expressions in Chinese news informed stop-word design, collocation expectations, and interpretation of high-PMI pairs.</span></p></li><li><p><span>Basic statistics and information theory (PMI, KL/MI) shaped metric choices and the design of document-level similarity analysis.</span></p></li></ul></li></ul><h2 id='data'><span>Data</span></h2><h3 id='sources-and-scale'><span>Sources and scale</span></h3><ul><li><p><span>ChinaNews: 10 scroll pages crawled (news1.html to news10.html); titles and article content collected into </span><code>data/chinanews.csv</code><span> (965 articles).</span></p></li><li><p><span>Sina News: 20 roll pages crawled; titles and article content collected into </span><code>data/xinlangnews.csv</code><span> (975 articles).</span></p></li></ul><h3 id='collection-methodology'><span>Collection methodology</span></h3><ul><li><p><span>Dynamic pages: Headless Chrome via </span><code>selenium</code><span> and </span><code>webdriver-manager</code><span>; standardized User-Agent; randomized delays (</span><code>time.sleep</code><span> with uniform/rand) to reduce bot detection.</span></p></li><li><p><span>Content extraction: </span><code>requests</code><span> for article pages; </span><code>BeautifulSoup</code><span> + </span><code>lxml</code><span> parsing; removal of ads/script/style/image/iframe blocks; fallbacks for multiple page templates (e.g., </span><code>id=&#39;artibody&#39;</code><span>, </span><code>class=&#39;article&#39;</code><span>, </span><code>class=&#39;content&#39;</code><span>).</span></p></li><li><p><span>Cleaning: HTML stripping, whitespace normalization, retention of Chinese characters and common punctuation; removal of specific trailing promotional segments (e.g., “海量资讯、精准解读”), editor notes (e.g., </span><code>【编辑:...】</code><span>).</span></p></li></ul><h3 id='data-artifacts-examples'><span>Data artifacts (examples)</span></h3><ul><li><p><span>Raw CSVs: </span><code>data/chinanews.csv</code><span>, </span><code>data/xinlangnews.csv</code></p></li><li><p><span>Analysis results: </span><code>data/*_analysis_results_{corpus,cooccur_prob,char_count,pmi_result}.{txt,json,csv}</code></p></li><li><p><span>Cleaned artifacts: </span><code>data/*_cleaned_{char_count,cooccur_prob}.json</code></p></li><li><p><span>PMI special outputs: </span><code>data/*_pmi_analysis.{json,csv}</code></p></li><li><p><span>Document MI outputs: </span><code>data/*_document_mutual_info_results.csv</code></p></li><li><p><span>PMI comparison: </span><code>data/cleaned_pmi_comparison_results.csv</code><span>, </span><code>data/cleaned_pmi1.json</code><span>, </span><code>data/cleaned_pmi2.json</code></p></li></ul><h3 id='ethics--licensing'><span>Ethics &amp; licensing</span></h3><ul><li><p><span>Publicly accessible content collected strictly for academic coursework.</span></p></li><li><p><span>Respectful scraping: randomized delays, standard UA, exclusion of non-content and ads.</span></p></li><li><p><span>No benchmark datasets; all data is self-collected per Course_Project_Guidelines.</span></p></li><li><p><span>For removal requests or additional licensing clarifications, please open an issue.</span></p></li></ul><h2 id='repository-structure'><span>Repository Structure</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Collection_ChinaNews.ipynb &nbsp; &nbsp; &nbsp; &nbsp; # web crawling: ChinaNews</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Collection_XinlangNews.ipynb &nbsp; &nbsp; &nbsp; # web crawling: Sina News</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Analysis_ChinaNews.ipynb &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # corpus cleaning, co-occurrence, PMI (ChinaNews)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Analysis_XinlangNews.ipynb &nbsp; &nbsp; &nbsp; &nbsp; # corpus cleaning, co-occurrence, PMI (Sina)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Processing_corpus_prob_analysis_ChinaNews.ipynb &nbsp; # cleaned co-occurrence + viz (ChinaNews)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Processing_corpus_prob_analysis_XinlangNews.ipynb # cleaned co-occurrence + viz (Sina)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Processing_pmi_analysis.ipynb &nbsp; &nbsp;  # cleaned PMI comparison (Sina vs. ChinaNews)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Visualization_word_frequency_analysis.ipynb &nbsp; &nbsp; &nbsp; # word frequency, word clouds, complexity</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Data_Visualization_articles_avg_pmi_analysis.ipynb &nbsp; &nbsp; # document-level MI matrix &amp; viz</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── data/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # datasets &amp; derived artifacts (CSV/JSON/TXT)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── README.assets/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # pictures for Report</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── picture/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # saved figures (PNG)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── README.md &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # Description of Our Project</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── Course_Project_Guidelines.md &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # course instruction reference</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── GroupBT_Presentation.pptx &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # GroupBT Presentation PPTX</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── GroupBT_Presentation.mp4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # GroupBT Presentation Video</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── GroupBT_Report.pdf &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # GroupBT Report(pdf)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── GroupBT_Report.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # GroupBT Report(html)--Recommendation</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── requirements.txt &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # environment dependencies</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 460px;"></div><div class="CodeMirror-gutters" style="display: none; height: 460px;"></div></div></div></pre><h2 id='environment--installation'><span>Environment &amp; Installation</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Create and activate a virtual environment</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python <span class="cm-attribute">-m</span> venv .venv</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># macOS/Linux</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">source</span> .venv/bin/activate</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Windows PowerShell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># .venv\Scripts\Activate.ps1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Install dependencies</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install <span class="cm-attribute">-r</span> requirements.txt</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>Dependencies include:</span></p><ul><li><p><span>Web scraping: </span><code>selenium</code><span>, </span><code>webdriver-manager</code><span>, </span><code>requests</code><span>, </span><code>beautifulsoup4</code><span>, </span><code>lxml</code></p></li><li><p><span>Processing &amp; analysis: </span><code>pandas</code><span>, </span><code>numpy</code><span>, </span><code>jieba</code></p></li><li><p><span>Visualization: </span><code>matplotlib</code><span>, </span><code>seaborn</code><span>, </span><code>networkx</code><span>, </span><code>wordcloud</code><span>, </span><code>Pillow</code></p></li></ul><h2 id='how-to-reproduce-run-order'><span>How to Reproduce (Run Order)</span></h2><p><span>You can run the full pipeline from scratch or start from provided data artifacts.</span></p><h3 id='option-a-full-pipeline-from-raw-collection'><span>Option A: Full pipeline (from raw collection)</span></h3><ol start='' ><li><p><span>Data collection</span></p><ul><li><p><code>Data_Collection_ChinaNews.ipynb</code></p></li><li><p><code>Data_Collection_XinlangNews.ipynb</code></p></li><li><p><span>Outputs: </span><code>data/chinanews.csv</code><span>, </span><code>data/xinlangnews.csv</code></p></li></ul></li><li><p><span>Base analysis and PMI computation</span></p><ul><li><p><code>Data_Analysis_ChinaNews.ipynb</code><span> → </span><code>data/chinanews_analysis_results_*</code><span>, </span><code>data/chinanews_pmi_analysis.{json,csv}</code></p></li><li><p><code>Data_Analysis_XinlangNews.ipynb</code><span> → </span><code>data/xinlangnews_analysis_results_*</code><span>, </span><code>data/xinlangnews_pmi_analysis.{json,csv}</code></p></li></ul></li><li><p><span>Cleaned co-occurrence and visualization</span></p><ul><li><p><code>Data_Processing_corpus_prob_analysis_ChinaNews.ipynb</code><span> → </span><code>data/chinanews_cleaned_*</code><span>, </span><code>picture/chinanews_cleaned_*</code></p></li><li><p><code>Data_Processing_corpus_prob_analysis_XinlangNews.ipynb</code><span> → </span><code>data/xinlangnews_cleaned_*</code><span>, </span><code>picture/xinlangnews_cleaned_*</code></p></li></ul></li><li><p><span>Cleaned PMI comparison (cross-source)</span></p><ul><li><p><code>Data_Processing_pmi_analysis.ipynb</code><span> → </span><code>data/cleaned_pmi_*</code><span>, </span><code>picture/cleaned_pmi_comparison_analysis.png</code></p></li></ul></li><li><p><span>Word frequency and article complexity</span></p><ul><li><p><code>Data_Visualization_word_frequency_analysis.ipynb</code><span> → </span><code>picture/{basedata}_xlres.png</code><span>, </span><code>picture/{basedata}_wordclouds.png</code><span>, </span><code>picture/{basedata}_complexity_analysis.png</code></p></li></ul></li><li><p><span>Document mutual information (pairwise article MI)</span></p><ul><li><p><code>Data_Visualization_articles_avg_pmi_analysis.ipynb</code><span> → </span><code>data/{basedata}_document_mutual_info_results.csv</code><span>, </span><code>picture/{basedata}_document_mutual_info_analysis.png</code></p></li></ul></li></ol><h3 id='option-b-use-existing-data-artifacts'><span>Option B: Use existing data artifacts</span></h3><ul><li><p><span>Skip step 1; start from step 2 using </span><code>data/*.csv</code><span> and </span><code>data/*_analysis_results_*</code><span> already in the repository.</span></p></li></ul><h2 id='dependencies--whyhow-key-packages'><span>Dependencies &amp; Why/How (Key Packages)</span></h2><ul><li><p><code>selenium</code><span>, </span><code>webdriver-manager</code><span>: Headless browser automation for dynamic pages and robust navigation.</span></p></li><li><p><code>requests</code><span>, </span><code>beautifulsoup4</code><span>, </span><code>lxml</code><span>: HTTP retrieval and structured HTML parsing for content extraction.</span></p></li><li><p><code>pandas</code><span>, </span><code>numpy</code><span>: Tabular manipulation, numeric computations, and pipeline-friendly data handling.</span></p></li><li><p><code>jieba</code><span>: Chinese word segmentation for word-level frequency analysis and complexity metrics.</span></p></li><li><p><code>matplotlib</code><span>, </span><code>seaborn</code><span>: Plotting distributions, heatmaps, bar charts, and annotated figures.</span></p></li><li><p><code>networkx</code><span>: Building and rendering directed co-occurrence network graphs.</span></p></li><li><p><code>wordcloud</code><span>, </span><code>Pillow</code><span>: Chinese word cloud generation with font support and high-quality image output.</span></p></li></ul><h2 id='data-engineering-cleaning-and-management'><span>Data Engineering, Cleaning, and Management</span></h2><ul><li><p><span>Cleaning &amp; engineering:</span></p><ul><li><p><span>Strip HTML tags/script/style; remove ads or non-content blocks; normalize whitespace; retain Chinese characters and common punctuation.</span></p></li><li><p><span>Adjacent character co-occurrence counts and conditional probabilities; PMI computed as </span><code>log2(P(c1,c2)/(P(c1)P(c2)))</code><span> with </span><code>P(c1,c2)=P(c2|c1)*P(c1)</code><span>.</span></p></li><li><p><span>Tokenization with </span><code>jieba</code><span> for word frequency analysis; word clouds and complexity metrics (lexical richness, average word length).</span></p></li></ul></li><li><p><span>Management &amp; reproducibility:</span></p><ul><li><p><span>Clear directory structure (</span><code>data/</code><span> and </span><code>picture/</code><span>) with intermediate and final artifacts saved as CSV/JSON/TXT.</span></p></li><li><p><span>Metadata files and cleaned versions to support inspection and re-use.</span></p></li><li><p><span>Requirements file and consistent notebook file paths for reproducible runs.</span></p></li></ul></li></ul><h2 id='data-analysis-learning-analytics-visualization'><span>Data Analysis: Learning, Analytics, Visualization</span></h2><p><span>This is a programming-focused project; we apply code-first techniques to produce interpretable metrics and visualizations. We summarize results by notebook, integrating printed outputs and saved figures.</span></p><h3 id='exploratory-data-analysis'><span>Exploratory Data Analysis</span></h3><ul><li><p><span>Statistical summaries:</span></p><ul><li><p><span>ChinaNews: 965 articles (</span><code>df.info()</code><span>), title/content columns non-null; confirms robust scraping.</span></p></li><li><p><span>Sina News: 975 articles (</span><code>df.info()</code><span>), title/content columns non-null; confirms broad coverage.</span></p></li></ul></li><li><p><span>Corpus statistics:</span></p><ul><li><p><span>ChinaNews: ~3,968 unique Chinese characters; 165,590 adjacent pairs with PMI computed.</span></p></li><li><p><span>Sina News: ~3,526 unique characters; 181,393 adjacent pairs with PMI computed.</span></p></li></ul></li><li><p><span>Word frequency: </span></p><p><strong><span>XinlangNews</span></strong></p><ul><li><p><span>Top 10 high-frequency words in content: 我们、公司、市场、产品、中国、企业、可能、罗永浩、亿元、科技；</span></p></li><li><p><span>Top 10 high-frequency words in title: 股份、中国、AI、公司、12、科技、市场、目录、证券、创新。</span></p></li></ul><p><img src="README.assets/xinlangnews_wordclouds.png" referrerpolicy="no-referrer" alt="Wordcloud_XinlangNews"></p><p><strong><span>ChianNews</span></strong></p><ul><li><p><span>Top 10 high-frequency words in content: 国际、中国、社会、体育、军事、热点、统战、视频、财经、文娱；</span></p></li><li><p><span>Top 10 high-frequency words in title: 中国、2025、发展、举行、国际、经济、世界杯、立法会、创新、香港。</span></p><p><img src="README.assets/chinanews_wordclouds.png" referrerpolicy="no-referrer" alt="Wordcloud_ChinaNews"></p></li></ul></li><li><p><span>Visualizations (saved under </span><code>picture/</code><span>):</span></p><ul><li><p><span>Co-occurrence probability heatmaps (cleaned, top 50 characters): </span><code>chinanews_cleaned_cooccurrence_analysis.png</code><span>, </span><code>xinlangnews_cleaned_cooccurrence_analysis.png</code><span>.</span></p></li><li><p><span>Strong pair barh charts with probability labels (top 15).</span></p></li><li><p><span>PMI distribution histograms and top-PMI bar charts (from analysis and processing notebooks).</span></p></li><li><p><span>Word clouds for content and title: </span><code>{basedata}_wordclouds.png</code><span> (content: white background; title: black background).</span></p></li><li><p><span>Title/content length histograms and lexical richness / average word-length histograms: </span><code>{basedata}_xlres.png</code><span>, </span><code>{basedata}_complexity_analysis.png</code><span>.</span></p></li><li><p><span>Document mutual information: heatmap + MI distribution with statistics box: </span><code>{basedata}_document_mutual_info_analysis.png</code><span>.</span></p></li></ul></li></ul><p><span>Interpretation highlights:</span></p><ul><li><p><span>ChinaNews tends to surface national/international themes (强共现：军事/热点/体育/世界/国际等)，reflected by strong adjacent pairs like 军→事 (≈0.7419), 热→点 (≈0.6546), 体→育 (≈0.5310), 世→界 (≈0.4323).</span>
+<img src="README.assets/chinanews_cleaned_cooccurrence_network.png" referrerpolicy="no-referrer" alt="Network_ChinaNews"></p></li><li><p><span>Sina News shows market/economics emphasis (强共现：投→资 (≈0.7000), 公→司 (≈0.6958), 市→场 (≈0.6004), 基→金 (≈0.3955), 月→日 (≈0.3439)).</span>
+<img src="README.assets/xinlangnews_cleaned_cooccurrence_network.png" referrerpolicy="no-referrer" alt="Network_XinlangNews"></p></li><li><p><span>Word frequency corroborates topical lean (business/tech terms appearing frequently in Sina titles and content).</span></p></li><li><p><span>Document-level MI matrices reveal clusters of similar articles; MI values range [0, ln(2)] with many pairs near mid-high values, indicating topical or stylistic overlap.</span></p></li></ul><h3 id='modeling--evaluation'><span>Modeling &amp; Evaluation</span></h3><p><span>We do not pursue complex ML models; instead, we use interpretable metrics:</span></p><ul><li><p><span>Character-level co-occurrence and PMI:</span></p><ul><li><p><span>PMI: </span><code>PMI(c1,c2) = log2( P(c1,c2) / (P(c1)P(c2)) )</code><span> with </span><code>P(c1,c2)=P(c2|c1)P(c1)</code><span>.</span></p></li><li><p><span>Cleaning of stop words and non-Chinese characters produces more stable PMI distributions and stronger signal in top pairs.</span></p></li></ul></li><li><p><span>Document-level mutual information:</span></p><ul><li><p><span>MI(P,Q) defined via KL divergences to the mean distribution M=0.5*(P+Q); values capped at ln(2).</span></p></li><li><p><span>Valid-doc filtering ensures stable MI estimates; saved top MI pairs with titles aid interpretation.</span></p></li></ul></li></ul><p><span>Evaluation and comparison:</span></p><ul><li><p><span>Cleaned PMI comparison (cross-source) uses common vs. unique pairs, difference histograms, scatter against y=x:</span>
+<img src="README.assets/cleaned_pmi_comparison_analysis.png" referrerpolicy="no-referrer" alt="comparison"></p><ul><li><p><span>Common pairs: ~47,189; Xinlang unique: ~91,895; ChinaNews unique: ~74,568.</span></p></li><li><p><span>Mean difference (ChinaNews − Xinlang) ≈ 0.023 over common pairs; top absolute differences highlight outlet-specific phraseology.</span></p></li></ul></li><li><p><span>Document MI:</span></p><ul><li><p><span>Summary statistics printed in the MI notebook (mean, median, min, max, counts) to assess distribution properties and cluster potential.</span></p></li></ul></li></ul><h3 id='visualization--interpretation'><span>Visualization &amp; Interpretation</span></h3><p><span>Effective storytelling:</span></p><ul><li><p><span>Heatmaps communicate structure at scale (co-occurrence probabilities; MI).</span></p></li><li><p><span>Histograms reveal distributions and skews (PMI values; MI upper-triangle).</span></p></li><li><p><span>Bar charts emphasize top collocations and frequency leaders.</span></p></li><li><p><span>Network graphs (cleaned co-occurrence) depict directional relationships with edge weights; node sizes reflect centrality (degree).</span></p></li><li><p><span>Word clouds provide intuitive view of topical emphasis across content vs. titles.</span></p></li></ul><p><span>Meaningful insights:</span></p><ul><li><p><span>Fixed expressions and formal journalistic terms dominate top PMI pairs (e.g., 军事、国际、市场、公司、基金等)，indicating stable lexical norms.</span></p></li><li><p><span>Source comparisons show ChinaNews’s broader national/international lexical clusters versus Sina News’s market/tech clusters.</span></p></li><li><p><span>MI clusters suggest topical groupings suitable for future theme extraction or trend dashboards.</span></p></li></ul><h2 id='results--insights-comprehensive'><span>Results &amp; Insights (Comprehensive)</span></h2><ul><li><p><span>ChinaNews vs. Sina News lexical patterns:</span></p><ul><li><p><span>ChinaNews strong-pair examples (probabilities from cleaned matrices): 军→事 ≈ 0.7419, 热→点 ≈ 0.6546, 体→育 ≈ 0.5310, 世→界 ≈ 0.4323, 国→际 ≈ 0.3879, 中→国 ≈ 0.3593.</span></p></li><li><p><span>Sina strong-pair examples: 投→资 ≈ 0.7000, 公→司 ≈ 0.6958, 市→场 ≈ 0.6004, 基→金 ≈ 0.3955, 月→日 ≈ 0.3439, 产→品 ≈ 0.3210.</span></p></li><li><p><span>Insight: outlets exhibit distinct topical collocations aligned with editorial focus—national/international vs. market/tech.</span></p></li></ul></li><li><p><span>PMI distributions:</span></p><ul><li><p><span>ChinaNews: top PMI ≈ 21.18; average ≈ 2.15; median ≈ 1.69; lowest ≈ -9.11.</span></p></li><li><p><span>Sina: top PMI ≈ 20.62; average ≈ 1.63; median ≈ 1.09; lowest ≈ -8.51.</span></p></li><li><p><span>Insight: both contain many strong formal collocations; ChinaNews shows slightly higher average PMI after cleaning.</span></p></li></ul></li><li><p><span>Cross-source cleaned PMI comparison:</span></p><ul><li><p><span>Common pairs ~47k; small positive mean difference (≈0.023) suggests ChinaNews marginally stronger PMI on average for shared pairs.</span></p></li><li><p><span>Top abs-diff pairs reveal outlet-specific phraseology to inspect (visuals and CSV saved for detailed review).</span></p></li></ul></li><li><p><span>Word frequency &amp; complexity (xinlangnews example):</span></p><ul><li><p><span>ChinaNews: frequent strong pairs reflect broad news topicality (军事/热点/体育/世界/国际). High-PMI pairs include formal fixed expressions and journalistic terms, suggesting tighter collocational patterns.</span></p></li><li><p><span>Sina News: strong economic/market collocations (投资/公司/市场/基金/月日) and tech themes (AI、科技、证券). Word frequency analysis corroborates the topical lean.</span></p></li><li><p><span>Complexity histograms: lexical richness and average word length distributions indicate stylistic variability across articles.</span>
+<img src="README.assets/xinlangnews_xlres.png" referrerpolicy="no-referrer" alt="length_distributions">
+<img src="README.assets/xinlangnews_complexity_analysis.png" referrerpolicy="no-referrer" alt="Complexity_histograms"></p></li></ul></li><li><p><span>Document mutual information:</span></p><ul><li><p><span>Vocabulary size ~3.4k; valid documents ~968 (xinlangnews); MI range [0, 0.693147]; average ~0.454; median ~0.456.</span></p></li><li><p><span>Insight: Many article pairs exhibit moderate-to-high similarity, reflecting common themes; top MI pairs (titles printed) indicate highly aligned content.</span>
+<img src="README.assets/xinlangnews_document_mutual_info_analysis.png" referrerpolicy="no-referrer" alt="Document_MI"></p></li></ul></li></ul><p><span>Figures and data (saved artifacts):</span></p><ul><li><p><code>picture/chinanews_cleaned_cooccurrence_analysis.png</code><span>, </span><code>picture/xinlangnews_cleaned_cooccurrence_analysis.png</code></p></li><li><p><code>picture/chinanews_cleaned_cooccurrence_network.png</code><span>, </span><code>picture/xinlangnews_cleaned_cooccurrence_network.png</code></p></li><li><p><code>picture/cleaned_pmi_comparison_analysis.png</code></p></li><li><p><code>picture/{basedata}_xlres.png</code><span>, </span><code>picture/{basedata}_wordclouds.png</code><span>, </span><code>picture/{basedata}_complexity_analysis.png</code></p></li><li><p><code>picture/{basedata}_document_mutual_info_analysis.png</code></p></li><li><p><code>data/*_analysis_results_*</code><span>, </span><code>data/*_cleaned_*</code><span>, </span><code>data/*_pmi_analysis.*</code><span>, </span><code>data/cleaned_pmi_*</code><span>, </span><code>data/*_document_mutual_info_results.csv</code></p></li></ul><h2 id='conclusion--reflection'><span>Conclusion &amp; Reflection</span></h2><ul><li><p><span>Key findings:</span></p><ul><li><p><span>A fully reproducible, interpretable pipeline transforms raw web news into transparent metrics and rich visuals.</span></p></li><li><p><span>Clear collocational structures emerge in both sources; top PMI pairs are fixed expressions or formal terms typical of Chinese news.</span></p></li><li><p><span>Cross-source contrasts (ChinaNews vs. Sina) reflect editorial focus—national/international vs. market/tech—supported by co-occurrence, PMI, and frequency analyses.</span></p></li><li><p><span>Document MI reveals clusters of similar articles, suggesting topical grouping potential.</span></p></li></ul></li><li><p><span>Limitations:</span></p><ul><li><p><span>Adjacent-character PMI misses longer multi-character phrases or named entities; segmentation quality affects word-level stats.</span></p></li><li><p><span>Web layout changes can disrupt scraping; anti-bot measures necessitate careful throttling and retries.</span></p></li><li><p><span>Topic context is partially captured at character level; sentence/paragraph structure not explicitly modeled.</span></p></li></ul></li><li><p><span>Reflection (team learning):</span></p><ul><li><p><span>Building an end-to-end, code-driven workflow improves reproducibility and interpretability; cleaning decisions materially affect downstream metrics.</span></p></li><li><p><span>Visual storytelling (heatmaps, network graphs, word clouds) helps communicate complex structures effectively.</span></p></li></ul></li><li><p><span>Future work:</span></p><ul><li><p><span>Phrase-level PMI (n-grams) and named-entity-aware collocation analysis.</span></p></li><li><p><span>Time-resolved trend analysis (daily/weekly windows) and topic clustering with interpretable features.</span></p></li><li><p><span>Cross-outlet dashboards and more nuanced sentiment/stylistic analytics.</span></p></li><li><p><span>Robust scraping orchestration (retry logic, error logs), environment freezing (lockfile), and automated figure generation pipelines.</span></p></li></ul></li></ul><h2 id='presentation'><span>Presentation</span></h2><ul><li><p><span>Report:Our project report offers two versions: </span><a href='./GroupBT_Report.html'><span>HTML (recommended)</span></a><span> and </span><a href='./GroupBT_Report.pdf'><span>PDF</span></a><span> .</span></p></li><li><p><span>pptx: </span><a href='./GroupBT_Presentation.pptx'><span>GroupBT_Presentation_PPTX</span></a></p></li><li><p><span>Video: </span><a href='./GroupBT_Presentation.mp4'><span>GroupBT_Presentation_Video</span></a><span></span><br/><span>Or you can also watch it on Bilibili by clicking </span><a href='https://b23.tv/Phd8aPN'><span>this link</span></a><span>.</span></p></li></ul><video src="GroupBT_Presentation.mp4"></video><h2 id='references'><span>References</span></h2><h3 id='tools-and-libraries'><span>Tools and Libraries</span></h3><ul><li><p><a href='https://github.com/joelYing/NewsSpider'><span>NewsSpider (reference project)</span></a></p></li><li><p><a href='https://github.com/fxsjy/jieba'><span>jieba: Chinese text segmentation</span></a></p></li><li><p><a href='https://www.crummy.com/software/BeautifulSoup/'><span>BeautifulSoup</span></a></p></li><li><p><a href='https://networkx.org/'><span>NetworkX</span></a></p></li><li><p><a href='https://amueller.github.io/word_cloud/'><span>WordCloud for Python</span></a></p></li><li><p><a href='https://matplotlib.org/'><span>Matplotlib</span></a><span> / </span><a href='https://seaborn.pydata.org/'><span>Seaborn</span></a></p></li></ul><h3 id='articles-guides-and-papers'><span>Articles, Guides, and Papers</span></h3><ul><li><p><a href='https://zhuanlan.zhihu.com/p/692365794'><span>知乎专栏：中文文本分析入门与方法概览</span></a></p></li><li><p><a href='https://libguides.gwu.edu/textanalysis/methods'><span>GWU Text Analysis Methods Guide</span></a></p></li><li><p><a href='https://aclanthology.org/2022.cmcl-1.6.pdf'><span>CMCL 2022: A Corpus-based Analysis of Lexical Co-occurrence and Predictability</span></a></p></li><li><p><a href='https://www.sciencedirect.com/science/article/abs/pii/S030645739600074X'><span>Pointwise Mutual Information and Information Retrieval (Scientific Methods, 1996)</span></a></p></li></ul><h2 id='acknowledgements'><span>Acknowledgements</span></h2><p><span>This project adheres to the CISC7201 Data Science Programming </span><a href='Course_Project_Guidelines.md'><span>Course Project Guidelines</span></a><span> and uses self-collected datasets only, focusing on programming, reproducibility, and clear communication of insights.</span></p></div></div>
+</body>
+</html>
